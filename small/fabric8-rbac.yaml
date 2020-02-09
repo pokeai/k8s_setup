@@ -16,6 +16,7 @@ subjects:
   - kind: ServiceAccount
     # Reference to upper's `metadata.name`
     name: default
+    # name: spark
     # Reference to upper's `metadata.namespace`
     namespace: default
 roleRef:

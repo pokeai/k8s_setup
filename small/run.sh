@@ -1,16 +1,21 @@
 # spark-2.4.4-bin-hadoop2.7/bin/spark-submit --class SimpleApp --master local[*] target/small-1.0-SNAPSHOT.jar
 # spark-submit --class SimpleApp --master local[*] target/small-1.0-SNAPSHOT.jar
-eval $(minikube docker-env)
 
+# minikube delete
+# minikube start  --cpus 4 --memory 8192
+#minikube start --kubernetes-version v1.12.0 --cpus 4 --memory 8192
+# eval $(minikube docker-env)
+
+kubectl apply -f fabric8-rbac.yaml
 
 spark-submit --class SimpleApp \
---master "k8s://https://192.168.39.146:8443" \
+--master "k8s://https://192.168.39.93:8443" \
 --deploy-mode cluster \
 --conf spark.kubernetes.container.image=cpchung:latest \
 --conf spark.kubernetes.image.pullPolicy=IfNotPresent \
 --conf spark.executor.instances=1 \
---conf spark.kubernetes.authenticate.driver.serviceAccountName=default \
 local:///small.jar
+# --conf spark.kubernetes.authenticate.driver.serviceAccountName=default \
 
 #target/small-1.0-SNAPSHOT.jar
 # --conf spark.kubernetes.container.image=localhost:5000/cpchung:latest \
@@ -47,6 +52,7 @@ local:///small.jar
 #docker image prune --all --filter until=48h
 
 # kubectl create serviceaccount spark
+
 
 #minikube docker-env
 
