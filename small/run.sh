@@ -60,3 +60,8 @@ local:///small.jar
 
 #https://stackoverflow.com/questions/47973570/kubernetes-log-user-systemserviceaccountdefaultdefault-cannot-get-services
 #https://github.com/fabric8io/fabric8/issues/6840
+
+
+# kubectl describe nodes (check CPU and Memory capacity of the node)
+
+# kubectl describe pod <driver> and kubectl describe pod <executor> (check Requests CPU and Memory values).
